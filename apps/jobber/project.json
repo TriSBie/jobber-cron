@@ -9,11 +9,15 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "webpack-cli build",
-        "args": ["node-env=production"]
+        "args": [
+          "node-env=production"
+        ]
       },
       "configurations": {
         "development": {
-          "args": ["node-env=development"]
+          "args": [
+            "node-env=development"
+          ]
         }
       }
     },
@@ -21,10 +25,12 @@
       "continuous": true,
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
-      "dependsOn": ["build"],
+      "dependsOn": [
+        "build"
+      ],
       "options": {
         "buildTarget": "jobber:build",
-        "runBuildTargetDependencies": false
+        "runBuildTargetDependencies": true
       },
       "configurations": {
         "development": {
@@ -33,6 +39,25 @@
         "production": {
           "buildTarget": "jobber:build:production"
         }
+      }
+    },
+    "generate-prisma": {
+      "command": "prisma generate",
+      "options": {
+        "cwd": "apps/jobber"
+      },
+      "cache": true
+    },
+    "migrate-prisma": {
+      "command": "prisma migrate dev --name init",
+      "options": {
+        "cwd": "apps/jobber"
+      }
+    },
+    "reset-prisma": {
+      "command": "prisma migrate reset --force",
+      "options": {
+        "cwd": "apps/jobber"
       }
     }
   }

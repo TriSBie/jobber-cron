@@ -42,3 +42,13 @@ Thumbs.db
 .nx/workspace-data
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
+
+.env
+.env.local
+
+/dist
+
+jobber/node_modules
+jobber/dist
+jobber/.env
+jobber/.env.local
