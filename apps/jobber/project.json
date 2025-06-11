@@ -27,7 +27,8 @@
       "defaultConfiguration": "development",
       "dependsOn": [
         "build",
-        "generate-prisma"
+        "generate-prisma",
+        "generate-proto"
       ],
       "options": {
         "buildTarget": "jobber:build",
@@ -45,14 +46,17 @@
     "generate-prisma": {
       "command": "prisma generate",
       "options": {
-        "cwd": "apps/jobber"
+        "cwd": "{projectRoot}",
+        "input": [
+          "prisma/schema.prisma"
+        ]
       },
       "cache": true
     },
     "migrate-prisma": {
       "command": "prisma migrate dev --name init",
       "options": {
-        "cwd": "apps/jobber"
+        "cwd": "{projectRoot}"
       }
     },
     "reset-prisma": {
@@ -60,6 +64,10 @@
       "options": {
         "cwd": "apps/jobber"
       }
+    },
+    "generate-proto": {
+      "command": "nx generate-ts-protoc",
+      "cache": true
     }
   }
 }
