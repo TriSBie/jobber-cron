@@ -16,7 +16,7 @@ export class AuthService {
         private readonly jwtService: JwtService
     ) { }
 
-    async authenticateauthenticate({ email, password }: LoginInput, res: Response) {
+    async login({ email, password }: LoginInput, res: Response) {
         const user = await this.verifyUser(email, password);
         const expires = new Date();
 
